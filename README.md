@@ -45,10 +45,10 @@ Project components are split into containers and components (Presentation and co
 
 ## App screens
 
-HomeScreen
+HomeScreen  
 <img src="https://user-images.githubusercontent.com/9643358/202224279-5bdb2541-e012-4ce4-8314-b90bcd192129.png" width="250">
 
-StoreScreen
+StoreScreen  
 <img src="https://user-images.githubusercontent.com/9643358/202224564-064596b2-93c0-4e27-ae30-77d6177e3ff5.png" width="250">
 
 ## Libraries used
