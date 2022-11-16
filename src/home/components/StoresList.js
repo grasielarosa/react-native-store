@@ -22,8 +22,9 @@ const StoresList = ({stores, onPressView}) => {
 
 const styles = StyleSheet.create({
   container: {
-    paddingVertical: 16,
-    padding: 8,
+    paddingTop: 16,
+    paddingHorizontal: 8,
+    paddingBottom: 36,
   },
   item: {
     marginBottom: 16,

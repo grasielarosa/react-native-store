@@ -44,6 +44,7 @@ const App = () => {
     colors: {
       ...MD3DarkTheme.colors,
       ...DarkTheme.colors,
+      background: '#353535',
     },
   };
 
