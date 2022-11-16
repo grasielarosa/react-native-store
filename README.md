@@ -43,6 +43,14 @@ Project components are split into containers and components (Presentation and co
   - StoresContext.js: This file contains the providers and the reducer used to modify the stores. (📝 Useful documentation: https://beta.reactjs.org/apis/react/useContext)
 - App.js: Main entry of the App, configures the theme, required providers and the navigation container.
 
+## App screens
+
+HomeScreen
+<img src="https://user-images.githubusercontent.com/9643358/202224279-5bdb2541-e012-4ce4-8314-b90bcd192129.png" width="250">
+
+StoreScreen
+<img src="https://user-images.githubusercontent.com/9643358/202224564-064596b2-93c0-4e27-ae30-77d6177e3ff5.png" width="250">
+
 ## Libraries used
 
 The following libraries are already used and configured in the App to simplify the development
