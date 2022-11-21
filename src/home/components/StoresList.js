@@ -1,22 +1,54 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
-import {ScrollView, StyleSheet, View} from 'react-native';
+import {ScrollView, StyleSheet, View, Text} from 'react-native';
+import {Searchbar} from 'react-native-paper';
 import StoreCard from './StoreCard';
 
 const StoresList = ({stores, onPressView}) => {
+  const [searchQuery, setSearchQuery] = useState('');
+  const [storesFiltered, setStoresFiltered] = useState(stores);
+
+  const onChangeSearch = query => {
+    setSearchQuery(query);
+    if (query) {
+      let filterValues =
+        storesFiltered && storesFiltered?.length > 0
+          ? storesFiltered?.filter(store =>
+              store?.name.toLowerCase()?.startsWith(query?.toLowerCase()),
+            )
+          : [];
+      setStoresFiltered([...filterValues]);
+    } else {
+      setStoresFiltered(stores);
+    }
+  };
+
   return (
-    <ScrollView style={styles.container}>
-      {stores?.map(store => (
-        <View key={store.id} style={styles.item}>
-          <StoreCard
-            id={store.id}
-            name={store.name}
-            cover={store.cover}
-            onPressView={onPressView}
-          />
-        </View>
-      ))}
-    </ScrollView>
+    <View>
+      <Searchbar
+        placeholder="Search"
+        onChangeText={onChangeSearch}
+        value={searchQuery}
+      />
+      <ScrollView style={styles.container}>
+        {storesFiltered.length > 0 &&
+          storesFiltered?.map(store => (
+            <View key={store.id} style={styles.item}>
+              <StoreCard
+                id={store.id}
+                name={store.name}
+                cover={store.cover}
+                onPressView={onPressView}
+              />
+            </View>
+          ))}
+        {storesFiltered.length <= 0 && (
+          <Text>
+            <Text>store not found</Text>
+          </Text>
+        )}
+      </ScrollView>
+    </View>
   );
 };
 
