@@ -1,16 +1,25 @@
 import React from 'react';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import PropTypes from 'prop-types';
 import {Image, StyleSheet, View} from 'react-native';
 import {Card, IconButton, Text} from 'react-native-paper';
 
 const ProductCard = ({id, name, cover, quantity, onModifyQuantity}) => {
+  const navigation = useNavigation();
+  const {params} = useRoute();
+  const {selectedStore} = params;
   const handleModifyQuantity = operation => {
     // TODO Implement increase or decrease of the current quantity
     onModifyQuantity(id, quantity);
   };
+  const handleProductView = productId => {
+    navigation.navigate('Product', {
+      selectedProduct: selectedStore.products.find(({id}) => id === productId),
+    });
+  };
 
   return (
-    <Card>
+    <Card onPress={() => handleProductView(id)}>
       <Card.Content>
         <View style={styles.content}>
           <Image style={styles.image} source={cover} />

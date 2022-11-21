@@ -17,6 +17,7 @@ import {Provider as PaperProvider} from 'react-native-paper';
 
 import HomeScreen from './src/home/containers/HomeScreen';
 import StoreScreen from './src/store/containers/StoreScreen';
+import {ProductScreen} from './src/products/containers/ProductScreen';
 import {StoresProvider} from './src/StoresContext';
 
 const Stack = createNativeStackNavigator();
@@ -72,6 +73,13 @@ const App = () => {
                 component={StoreScreen}
                 options={({route}) => ({
                   title: route.params.selectedStore.name,
+                })}
+              />
+              <Stack.Screen
+                name="Product"
+                component={ProductScreen}
+                options={({route}) => ({
+                  title: route.params.selectedProduct.name,
                 })}
               />
             </Stack.Navigator>
