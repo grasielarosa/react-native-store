@@ -14,7 +14,7 @@ const StoreScreen = () => {
   const storeToShow = stores.find(store => store.id === selectedStore.id);
 
   const handleQuantityModification = (productId, newQuantity) => {
-    const updateProducts = selectedStore.products.map(product => {
+    const updateProducts = storeToShow.products.map(product => {
       let newProduct = {...product};
 
       if (product.id === productId) {
@@ -24,7 +24,7 @@ const StoreScreen = () => {
     });
 
     const updateQuantity = {
-      ...selectedStore,
+      ...storeToShow,
       products: updateProducts,
     };
 
