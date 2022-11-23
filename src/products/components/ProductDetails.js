@@ -16,7 +16,12 @@ const ProductDetails = ({product}) => {
             <Text variant="titleLarge">{product.name}</Text>
             <View style={{padding: 5, flexDirection: 'row'}}>
               {product.labels.map(tag => (
-                <Chip mode="outlined" compact elevated style={styles.chip}>
+                <Chip
+                  mode="outlined"
+                  compact
+                  elevated
+                  style={styles.chip}
+                  key={tag}>
                   #{tag}
                 </Chip>
               ))}

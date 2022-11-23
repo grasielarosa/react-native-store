@@ -13,8 +13,10 @@ const ProductCard = ({id, name, cover, quantity, onModifyQuantity}) => {
     const newQuantity = operation === 'add' ? quantity + 1 : quantity - 1;
     onModifyQuantity(id, newQuantity);
   };
+
   const handleProductView = productId => {
     navigation.navigate('Product', {
+      selectedStore: selectedStore.id,
       selectedProduct: selectedStore.products.find(({id}) => id === productId),
     });
   };
