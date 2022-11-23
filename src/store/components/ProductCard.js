@@ -8,9 +8,10 @@ const ProductCard = ({id, name, cover, quantity, onModifyQuantity}) => {
   const navigation = useNavigation();
   const {params} = useRoute();
   const {selectedStore} = params;
+
   const handleModifyQuantity = operation => {
-    // TODO Implement increase or decrease of the current quantity
-    onModifyQuantity(id, quantity);
+    const newQuantity = operation === 'add' ? quantity + 1 : quantity - 1;
+    onModifyQuantity(id, newQuantity);
   };
   const handleProductView = productId => {
     navigation.navigate('Product', {

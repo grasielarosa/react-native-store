@@ -3,20 +3,42 @@ import PropTypes from 'prop-types';
 import {useRoute} from '@react-navigation/native';
 import {View} from 'react-native';
 import StoreDetails from '../components/StoreDetails';
+import {useStoresDispatch, useStores} from '../../StoresContext';
 
 const StoreScreen = () => {
   const {params} = useRoute();
   const {selectedStore} = params;
+  const dispatch = useStoresDispatch();
+  const stores = useStores();
+
+  const storeToShow = stores.find(store => store.id === selectedStore.id);
 
   const handleQuantityModification = (productId, newQuantity) => {
-    // TODO Add logic to update the new quantity in the object
+    const updateProducts = selectedStore.products.map(product => {
+      let newProduct = {...product};
+
+      if (product.id === productId) {
+        newProduct.quantity = newQuantity;
+      }
+      return newProduct;
+    });
+
+    const updateQuantity = {
+      ...selectedStore,
+      products: updateProducts,
+    };
+
+    dispatch({
+      type: 'update',
+      store: updateQuantity,
+    });
   };
 
   return (
     <View>
       <StoreDetails
-        store={selectedStore}
-        products={selectedStore.products}
+        store={storeToShow}
+        products={storeToShow.products}
         onModifyQuantity={handleQuantityModification}
       />
     </View>

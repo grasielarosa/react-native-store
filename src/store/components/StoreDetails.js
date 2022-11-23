@@ -6,6 +6,7 @@ import ProductsList from './ProductsList';
 
 const StoreDetails = ({store, products, onModifyQuantity}) => {
   const {name, address, cover, phone} = store;
+
   return (
     <ScrollView>
       <Image source={cover} style={styles.image} />
